@@ -4,6 +4,7 @@ from os import path
 import socket
 import sys
 import glob
+import socket
 from configparser import RawConfigParser
 
 config = RawConfigParser(allow_no_value=True)
@@ -66,8 +67,8 @@ def serve(handler):
 	])
 
 	port = config.getint('listen', 'port')
-	address = config.get('listen', 'address')
-	print("listening on port", port, "address", address)
+	address = socket.gethostbyname(socket.gethostname())
+	print("listening on port", port, "with address", address)
 
 	application.listen(port)
 
