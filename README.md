@@ -1,26 +1,9 @@
-* __Scroll Down__ for installation instructions (Windows).
-* Clone the repo to download latest version of i2DX.
-
-
-__Video Demos__
-
-* [1 iPad + 1 iPod Touch + StepMania](http://www.youtube.com/watch?v=C3cZsZYK4Jo) / Ristaccia
-* [2 iPads + StepMania](http://www.youtube.com/watch?v=f7GBGOO5DRw&feature=channel) / garden
-* [2 iPads v.s. Home Controller + Lunatic Rave 2](http://www.youtube.com/watch?v=RfJ5FoVZiBs) / being torn the sky
-* [1 iPad](http://www.youtube.com/watch?v=tiuCW311GEA) / Elisha
-
-i2DX
-=======
+# i2DX
 
 i2DX is a web-based IIDX controller for mobile devices.
 
-You can use it with [StepMania 5](http://www.stepmania.com/), especially with the
-[beatmaniaIIDX15 theme](http://www.stepmania.com/forums/showthread.php?28308-SM5-beatmaniaIIDX15-theme-and-noteskin&p=195991#post195991).
-You can also use it with Lunatic Rave 2, or other sims as well.
-
-Because it is __web based__, you just need to run the server application on your computer,
-and then point your device's web browser to the server (they must be on the same wireless network!).
-__No application installation needed on the device.__
+Because it is **web based**, you just need to run the server application on your computer,
+and then point your device's web browser to the server.
 
 --------------
 
@@ -33,15 +16,13 @@ It uses the following technologies:
 
 
 
-How it works
-------------
+## How it works
 
 The server serves the file to the device's web browser, which connects back to
 the server via WebSocket and send the press / release events.
 The WebSocket server then uses the keyboard library to press the keys.
 
-Controllers
----------------
+## Controllers
 
 * IIDX 1P
 * IIDX 2P
@@ -58,10 +39,9 @@ Setup
 * An additional mobile device (optional, used as a dedicated scratch controller)
 * A working WiFi connection (not required if using [adb reverse](#adb-reverse))
 
-Server Instructions
--------------------
+## Server Instructions
 
-Download __Python__ from [python.org](http://python.org/download/).
+Download **Python** from [python.org](http://python.org/download/).
 
 Then open command prompt and run
 
@@ -70,14 +50,14 @@ Then open command prompt and run
 
 And then go to the `server` directory and run `start.bat` **as an administrator** (or the keys won't be registered by your tools).
 
-Now navigate your client to the the server (see __Client Instructions__ below).
+Now navigate your client to the the server (see **Client Instructions** below).
 Try pressing some keys, it should type something on your keyboard.
 
 With that set, open your tools and map the pressed key to the corresponding input!
 
 
-<span id="client-instructions">Client Instructions</span>
--------------------
+## Client Instructions
+
 Use your device's web browser to navigate to
 
     http://[your ip]:9876/
@@ -94,15 +74,13 @@ Now that if you have a scratch controller, you may not want it on the main contr
 you can move the scratch area of the main controller to the right.
 
 
-Hard Mode
----------
+## Hard Mode
 
 In normal mode, you can slide between buttons.
 On real machines / controllers, you might not be able to do that, so in hard
 mode, you cannot slide between buttons.
 
-adb reverse
----------
+## adb reverse
 
 You can improve latency by running i2DX with your Android device tethered to
 your computer. However, this requires a little extra setup:
@@ -138,8 +116,7 @@ python server-windows.py
 pause
 ```
 
-Keyboard maps
------------------------
+## Keyboard mapping
 
 * `m`: Key 1
 * `k`: Key 2
@@ -154,3 +131,10 @@ Keyboard maps
 * `p`: Select
 
 You can change key mappings in `server\config.ini`.
+
+### Video Demos (Outdated)
+
+* [1 iPad + 1 iPod Touch + StepMania](http://www.youtube.com/watch?v=C3cZsZYK4Jo) / Ristaccia
+* [2 iPads + StepMania](http://www.youtube.com/watch?v=f7GBGOO5DRw&feature=channel) / garden
+* [2 iPads v.s. Home Controller + Lunatic Rave 2](http://www.youtube.com/watch?v=RfJ5FoVZiBs) / being torn the sky
+* [1 iPad](http://www.youtube.com/watch?v=tiuCW311GEA) / Elisha
