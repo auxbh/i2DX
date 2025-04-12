@@ -3,3 +3,6 @@
 *.pyc
 server/dist
 server/build
+server/platform-tools
+server/start-adb-reverse.bat
+server/start-adb-reverse-subscreen.bat
