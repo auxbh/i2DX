@@ -29,7 +29,7 @@ It uses the following technologies:
 * [WebSocket](http://websocket.org/)
 * Python __3.9+__
 	* [Tornado Web Server](http://www.tornadoweb.org/)
-* [keyboard](https://pypi.org/project/keyboard/)
+    * [keyboard](https://pypi.org/project/keyboard/)
 
 
 
@@ -38,8 +38,7 @@ How it works
 
 The server serves the file to the device's web browser, which connects back to
 the server via WebSocket and send the press / release events.
-
-__On Windows__: The WebSocket server then uses the keyboard library to press the keys.
+The WebSocket server then uses the keyboard library to press the keys.
 
 Controllers
 ---------------
@@ -54,13 +53,13 @@ Controllers
 Setup
 -----
 
-* A computer with beatmaniaIIDX simulator (recommended: LR2, Beatoraja or [Bemuse](https://bemuse.ninja))
+* A computer with beatmania IIDX
 * An iPad or an Android tablet device with a web browser
 * An additional mobile device (optional, used as a dedicated scratch controller)
-* A working WiFi connection (may or may not have internet access. In my opinion, ad-hoc is the best)
+* A working WiFi connection (not required if using [adb reverse](#adb-reverse))
 
-Server Instructions (Windows + autopy)
--------------------------------------------------
+Server Instructions
+-------------------
 
 Download __Python__ from [python.org](http://python.org/download/).
 
@@ -102,7 +101,44 @@ In normal mode, you can slide between buttons.
 On real machines / controllers, you might not be able to do that, so in hard
 mode, you cannot slide between buttons.
 
-Keyboard maps (Windows)
+adb reverse
+---------
+
+You can improve latency by running i2DX with your Android device tethered to
+your computer. However, this requires a little extra setup:
+
+- Connect your Android device to your computer with a USB cable.
+- If you haven't enabled Developer options on your device, do it by navigating to
+the "About" page in your phone's settings, then tap "Build number" seven times.
+This varies by device, so if unsure, look up the instructions for your specific
+one.
+- Navigate to Developer options and enable USB debugging.
+- On your computer, download and extract [Android SDK Platform Tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
+to your `i2DX\server\` folder.
+- Navigate to the `i2DX\server\platform-tools` folder in File Explorer, click on the
+address bar, type `cmd`, and hit Enter to open a command prompt.
+- In the command prompt, type the following command: (change the port if required)
+
+```
+adb reverse tcp:9876 tcp:9876
+```
+
+- Start i2DX as normal.
+- On your Android device, open your web browser, and change the address to `0.0.0.0:9876` (or the port you set it to).
+- That's it!
+
+The next time you want to use the controller, you only need to run the `adb reverse ...` command
+again. To do this automatically when the game starts, add a line to the `start.bat`
+script **before** the `python server-windows.py` line:
+
+```
+cd /d "%~dp0"
+platform-tools\adb reverse tcp:9876 tcp:9876
+python server-windows.py
+pause
+```
+
+Keyboard maps
 -----------------------
 
 * `m`: Key 1
